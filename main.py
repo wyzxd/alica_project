@@ -107,11 +107,11 @@ def handler(event, context):
             "text"] = "Привет, хочешь выучить стих? Я помогу с этим! Чтобы узнать, как пользоваться навыком, скажи помощь! Чтобы начать, скажи начать."
         response['response']['tts'] = response['response']['text']
         response["response"]["buttons"] = [{
-            "title": "начать",
+            "title": "Начать",
             "hide": True
         },
             {
-                "title": "помощь",
+                "title": "Помощь",
                 "hide": True
             }]
     elif event['session']['message_id'] - len(errors) == 1:
@@ -122,7 +122,7 @@ def handler(event, context):
         elif event['request']['original_utterance'].lower() in start:
             response["response"]["text"] = 'Хорошо, теперь введите имя и фамилию автора, а затем название произведения.'
             response['response']['tts'] = response['response']['text']
-        elif event['request']['original_utterance'].lower() in ['что ты умеешь']:
+        elif event['request']['original_utterance'].lower() in ['что ты умеешь?']:
             response["response"][
                 "text"] = 'Я могу помочь выучить твой стих! Просто назови мне имя и фамилию автора, а затем название произведения!'
             response['response']['tts'] = response['response']['text']
@@ -138,7 +138,7 @@ def handler(event, context):
             response["response"]["text"] = 'Введите пожалуйста имя и фамилию автора, а затем название стихотворения'
             response['response']['tts'] = response['response']['text']
             errors[len(errors) + 1] = 'Помощь'
-        elif event['request']['original_utterance'].lower() in ['что ты умеешь']:
+        elif event['request']['original_utterance'].lower() in ['что ты умеешь?']:
             response["response"][
                 "text"] = 'Я могу помочь выучить твой стих! Просто назови мне имя и фамилию автора, а затем название произведения! Теперь продолжайте'
             response['response']['tts'] = response['response']['text']
@@ -175,7 +175,7 @@ def handler(event, context):
                     "hide": True
                 }]
             errors[len(errors) + 1] = 'Помощь'
-        elif event['request']['original_utterance'].lower() in ['что ты умеешь']:
+        elif event['request']['original_utterance'].lower() in ['что ты умеешь?']:
             response["response"][
                 "text"] = 'Я могу помочь выучить твой стих! Просто назови мне имя и фамилию автора, а затем название произведения! Теперь продолжайте'
             response['response']['tts'] = response['response']['text']
@@ -223,6 +223,10 @@ def handler(event, context):
                 response['response']['buttons'] = [{
                     "title": "Пропустить",
                     "hide": True
+                },
+                {
+                    "title": "Помощь",
+                    "hide": True
                 }]
             else:
                 response["response"]["text"] = 'Извините, я вас не поняла!'
@@ -234,7 +238,7 @@ def handler(event, context):
             response["response"]["text"] = 'Сейчас просто повторяйте за мной'
             response['response']['tts'] = response['response']['text']
             errors[len(errors) + 1] = 'Помощь'
-        elif event['request']['original_utterance'].lower() in ['что ты умеешь']:
+        elif event['request']['original_utterance'].lower() in ['что ты умеешь?']:
             response["response"][
                 "text"] = 'Я могу помочь выучить твой стих! Просто назови мне имя и фамилию автора, а затем название произведения! Теперь продолжайте'
             response['response']['tts'] = response['response']['text']
@@ -258,6 +262,10 @@ def handler(event, context):
                     response['response']['buttons'] = [{
                         "title": "Пропустить",
                         "hide": True
+                    },
+                    {
+                        "title": "Помощь",
+                        "hide": True
                     }]
                     if event["request"]["original_utterance"].lower() == "пропустить":
                         next = razdel(parse(users[event['session']['user_id']]),
@@ -268,6 +276,10 @@ def handler(event, context):
                             response['response']['tts'] = response['response']['text']
                             response['response']['buttons'] = [{
                                 "title": "Пропустить",
+                                "hide": True
+                            },
+                            {
+                                "title": "Помощь",
                                 "hide": True
                             }]
                         else:
@@ -280,6 +292,10 @@ def handler(event, context):
                                           event['session']['message_id'] - len(errors)) + '\n'
                             response['response']['buttons'] = [{
                                 "title": "Пропустить",
+                                "hide": True
+                            },
+                            {
+                                "title": "Помощь",
                                 "hide": True
                             }]
                             if next != '\n':
@@ -310,7 +326,11 @@ def handler(event, context):
                     response['response']['buttons'] = [{
                         "title": "Пропустить",
                         "hide": True
-                    }]
+                    },
+                    {
+                        "title": "Помощь",
+                        "hide": True
+                     }]
                     if event["request"]["original_utterance"].lower() == "пропустить":
                         next = razdel(parse(users[event['session']['user_id']]),
                                       event['session']['message_id'] - len(errors)) + '\n'
@@ -319,6 +339,10 @@ def handler(event, context):
                             response['response']['tts'] = response['response']['text']
                             response['response']['buttons'] = [{
                                 "title": "Пропустить",
+                                "hide": True
+                            },
+                            {
+                                "title": "Помощь",
                                 "hide": True
                             }]
                         else:
@@ -331,6 +355,10 @@ def handler(event, context):
                                           event['session']['message_id'] - len(errors)) + '\n'
                             response['response']['buttons'] = [{
                                 "title": "Пропустить",
+                                "hide": True
+                            },
+                            {
+                                "title": "Помощь",
                                 "hide": True
                             }]
                             if next != '\n':
